@@ -1,0 +1,21 @@
+{
+  "name": "campus-grievance-swarm",
+  "version": "1.0.0",
+  "description": "Campus Grievance Swarm with Meko Context Layer — hackCBS 9.0 · Track B",
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node test/test_meko.js"
+  },
+  "keywords": [
+    "meko",
+    "yugabyte",
+    "mcp",
+    "hackcbs",
+    "multi-agent",
+    "swarm"
+  ],
+  "author": "Antigravity Hackathon Team",
+  "license": "MIT"
+}

@@ -1,0 +1,329 @@
+{
+  "campus-canon": [
+    {
+      "memory_id": "canon_5f674d0a",
+      "original_memory_id": "mem_09d4a449",
+      "datapack_id": "campus-canon",
+      "content": "VERIFIED CANON LESSON: For Block B Floor 2 geyser, tripping issues during winter are caused by phase load imbalance (space heaters on Phase 1), NOT heating coil failure. Solution: Shift geyser breaker to Phase 2 on subpanel DB-2B. Avoid ordering replacement heating coils.",
+      "data": {},
+      "metadata": {
+        "type": "candidate_canon_lesson",
+        "ticket_id": "TKT-45AFB6",
+        "location": "Block B Floor 2",
+        "appliance": "geyser",
+        "recorded_by": "Caretaker Ramesh",
+        "promotion_status": "pending_human_approval",
+        "created_at": "2026-10-31T18:00:26.390Z",
+        "created_by": "knowledge_keeper",
+        "promoted_from": "dept-electricity",
+        "promoted_at": "2026-10-31T18:00:26.392Z",
+        "promoted_by_agent": "knowledge_keeper",
+        "human_approver": "Caretaker Ramesh",
+        "note": "Physically inspected and verified Phase 2 load stability",
+        "verified": true
+      }
+    }
+  ],
+  "dept-electricity": [
+    {
+      "memory_id": "mem_f4b5ae92",
+      "datapack_id": "dept-electricity",
+      "content": "SCHEDULED OUTAGE: Substation 2 scheduled maintenance shutdown Nov 2, 14:00 - 17:00 IST. Affects Hostel Block B and C west wings. No heavy load or geyser testing permitted.",
+      "data": {},
+      "metadata": {
+        "type": "maintenance_schedule",
+        "block": "Block B",
+        "window": "14:00 - 17:00",
+        "status": "active",
+        "created_at": "2026-10-31T18:00:26.380Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_e572e44d",
+      "datapack_id": "dept-electricity",
+      "content": "EQUIPMENT SPEC: Hostel Block B Floor 2 washroom runs a 25L Venus 2000W geyser connected to distribution board DB-2B.",
+      "data": {},
+      "metadata": {
+        "type": "equipment_spec",
+        "location": "Block B Floor 2",
+        "created_at": "2026-10-31T18:00:26.381Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_e39da1fc",
+      "datapack_id": "dept-electricity",
+      "content": "DISPATCH & ETA for [TKT-45AFB6]: ETA 4 hours (Electrician diagnosis & coil resistance test required). Action: Standard diagnostic check: inspect power outlet, examine heating element, verify main distribution switch.",
+      "data": {},
+      "metadata": {
+        "type": "dispatch_plan",
+        "ticket_id": "TKT-45AFB6",
+        "technician": "Suresh Kumar",
+        "eta_minutes": 240,
+        "created_at": "2026-10-31T18:00:26.386Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_09d4a449",
+      "datapack_id": "dept-electricity",
+      "content": "VERIFIED CANON LESSON: For Block B Floor 2 geyser, tripping issues during winter are caused by phase load imbalance (space heaters on Phase 1), NOT heating coil failure. Solution: Shift geyser breaker to Phase 2 on subpanel DB-2B. Avoid ordering replacement heating coils.",
+      "data": {},
+      "metadata": {
+        "type": "candidate_canon_lesson",
+        "ticket_id": "TKT-45AFB6",
+        "location": "Block B Floor 2",
+        "appliance": "geyser",
+        "recorded_by": "Caretaker Ramesh",
+        "promotion_status": "pending_human_approval",
+        "created_at": "2026-10-31T18:00:26.390Z",
+        "created_by": "knowledge_keeper"
+      }
+    },
+    {
+      "memory_id": "mem_3e576e35",
+      "datapack_id": "dept-electricity",
+      "content": "DISPATCH & ETA for [TKT-9DFEFB]: ETA 30 minutes (Institutional fix recalled from Campus Canon). Action: ⚡ VERIFIED FIX RECALLED FROM CANON [canon_5f674d0a]: Do NOT replace heating element! Tripping is caused by Phase 1 winter radiator overload. Shift breaker to Phase 2 on Subpanel 2B and verify 65°C thermostat setting.",
+      "data": {},
+      "metadata": {
+        "type": "dispatch_plan",
+        "ticket_id": "TKT-9DFEFB",
+        "technician": "Suresh Kumar",
+        "eta_minutes": 30,
+        "created_at": "2026-10-31T18:00:26.401Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_812909ad",
+      "datapack_id": "dept-electricity",
+      "content": "SCHEDULED OUTAGE: Substation 2 scheduled maintenance shutdown Nov 2, 14:00 - 17:00 IST. Affects Hostel Block B and C west wings. No heavy load or geyser testing permitted.",
+      "data": {},
+      "metadata": {
+        "type": "maintenance_schedule",
+        "block": "Block B",
+        "window": "14:00 - 17:00",
+        "status": "active",
+        "created_at": "2026-10-31T18:00:34.510Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_9c460e0f",
+      "datapack_id": "dept-electricity",
+      "content": "EQUIPMENT SPEC: Hostel Block B Floor 2 washroom runs a 25L Venus 2000W geyser connected to distribution board DB-2B.",
+      "data": {},
+      "metadata": {
+        "type": "equipment_spec",
+        "location": "Block B Floor 2",
+        "created_at": "2026-10-31T18:00:34.512Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_42d4ed83",
+      "datapack_id": "dept-electricity",
+      "content": "DISPATCH & ETA for [TKT-364A61]: ETA 30 minutes (Institutional fix recalled from Campus Canon). Action: ⚡ VERIFIED FIX RECALLED FROM CANON [canon_5f674d0a]: Do NOT replace heating element! Tripping is caused by Phase 1 winter radiator overload. Shift breaker to Phase 2 on Subpanel 2B and verify 65°C thermostat setting.",
+      "data": {},
+      "metadata": {
+        "type": "dispatch_plan",
+        "ticket_id": "TKT-364A61",
+        "technician": "Suresh Kumar",
+        "eta_minutes": 30,
+        "created_at": "2026-10-31T18:02:01.083Z",
+        "created_by": "electricity"
+      }
+    },
+    {
+      "memory_id": "mem_3b7ff575",
+      "datapack_id": "dept-electricity",
+      "content": "VERIFIED CANON LESSON: For Block B Floor 2 geyser, tripping issues during winter are caused by phase load imbalance (space heaters on Phase 1), NOT heating coil failure. Solution: Shift geyser breaker to Phase 2 on subpanel DB-2B. Avoid ordering replacement heating coils.",
+      "data": {},
+      "metadata": {
+        "type": "candidate_canon_lesson",
+        "ticket_id": "TKT-364A61",
+        "location": "Block B Floor 2",
+        "appliance": "geyser",
+        "recorded_by": "Caretaker Ramesh",
+        "promotion_status": "pending_human_approval",
+        "created_at": "2026-10-31T18:02:02.347Z",
+        "created_by": "knowledge_keeper"
+      }
+    }
+  ],
+  "dept-mess": [
+    {
+      "memory_id": "mem_326abb24",
+      "datapack_id": "dept-mess",
+      "content": "MESS LOG: Commercial steam boiler inspection passed. Hot water supply for hostel kitchens operating normally.",
+      "data": {},
+      "metadata": {
+        "type": "inspection",
+        "facility": "Central Mess",
+        "created_at": "2026-10-31T18:00:26.382Z",
+        "created_by": "mess"
+      }
+    },
+    {
+      "memory_id": "mem_40be5b86",
+      "datapack_id": "dept-mess",
+      "content": "MESS LOG: Commercial steam boiler inspection passed. Hot water supply for hostel kitchens operating normally.",
+      "data": {},
+      "metadata": {
+        "type": "inspection",
+        "facility": "Central Mess",
+        "created_at": "2026-10-31T18:00:34.512Z",
+        "created_by": "mess"
+      }
+    }
+  ],
+  "student-riya-private": [
+    {
+      "memory_id": "mem_5fcdfe7c",
+      "datapack_id": "student-riya-private",
+      "content": "The geyser in the 2nd floor bathroom gives lukewarm water and then the lights flicker and it completely stops heating.",
+      "data": {},
+      "metadata": {
+        "type": "raw_complaint",
+        "student_id": "riya",
+        "student_name": "Riya Patel",
+        "room": "204",
+        "submitted_at": "2026-10-31T18:00:26.383Z",
+        "created_at": "2026-10-31T18:00:26.383Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_3dc81647",
+      "datapack_id": "student-riya-private",
+      "content": "STATUS UPDATE for [TKT-45AFB6]: Your complaint has been logged and routed to the electricity maintenance cell.",
+      "data": {},
+      "metadata": {
+        "type": "ticket_status",
+        "ticket_id": "TKT-45AFB6",
+        "student_id": "riya",
+        "category": "electricity",
+        "is_clustered": false,
+        "created_at": "2026-10-31T18:00:26.385Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_d9da378f",
+      "datapack_id": "student-riya-private",
+      "content": "RESOLUTION NOTICE for [TKT-45AFB6]: Issue resolved by Caretaker Ramesh & Suresh Kumar. Diagnosis: Phase 1 radiator load was tripping 16A breaker. Switched geyser circuit to Phase 2 on subpanel DB-2B.",
+      "data": {},
+      "metadata": {
+        "type": "ticket_resolved",
+        "ticket_id": "TKT-45AFB6",
+        "created_at": "2026-10-31T18:00:26.389Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_32552da8",
+      "datapack_id": "student-riya-private",
+      "content": "The geyser in the 2nd floor bathroom gives lukewarm water and then the lights flicker and it completely stops heating.",
+      "data": {},
+      "metadata": {
+        "type": "raw_complaint",
+        "student_id": "riya",
+        "student_name": "Riya Patel",
+        "room": "204",
+        "submitted_at": "2026-10-31T18:02:01.073Z",
+        "created_at": "2026-10-31T18:02:01.073Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_73fb7dba",
+      "datapack_id": "student-riya-private",
+      "content": "STATUS UPDATE for [TKT-364A61]: Your complaint has been logged and routed to the electricity maintenance cell.",
+      "data": {},
+      "metadata": {
+        "type": "ticket_status",
+        "ticket_id": "TKT-364A61",
+        "student_id": "riya",
+        "category": "electricity",
+        "is_clustered": false,
+        "created_at": "2026-10-31T18:02:01.079Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_7977a9e0",
+      "datapack_id": "student-riya-private",
+      "content": "RESOLUTION NOTICE for [TKT-364A61]: Issue resolved by Caretaker Ramesh & Suresh Kumar. Diagnosis: Phase 1 radiator load was tripping 16A breaker. Switched geyser circuit to Phase 2 on subpanel DB-2B.",
+      "data": {},
+      "metadata": {
+        "type": "ticket_resolved",
+        "ticket_id": "TKT-364A61",
+        "created_at": "2026-10-31T18:02:02.345Z",
+        "created_by": "intake"
+      }
+    }
+  ],
+  "student-arjun-private": [
+    {
+      "memory_id": "mem_da82b693",
+      "datapack_id": "student-arjun-private",
+      "content": "Water heater is totally dead again in 2nd floor washroom, no warm water this morning.",
+      "data": {},
+      "metadata": {
+        "type": "raw_complaint",
+        "student_id": "arjun",
+        "student_name": "Arjun Sen",
+        "room": "212",
+        "submitted_at": "2026-10-31T18:00:26.394Z",
+        "created_at": "2026-10-31T18:00:26.394Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_ddb7eefa",
+      "datapack_id": "student-arjun-private",
+      "content": "STATUS UPDATE for [TKT-397862]: Your complaint has been logged and routed to the electricity maintenance cell.",
+      "data": {},
+      "metadata": {
+        "type": "ticket_status",
+        "ticket_id": "TKT-397862",
+        "student_id": "arjun",
+        "category": "electricity",
+        "is_clustered": false,
+        "created_at": "2026-10-31T18:00:26.396Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_ec24afb4",
+      "datapack_id": "student-arjun-private",
+      "content": "Water heater is totally dead again in 2nd floor washroom, no warm water this morning.",
+      "data": {},
+      "metadata": {
+        "type": "raw_complaint",
+        "student_id": "arjun",
+        "student_name": "Arjun Sen",
+        "room": "212",
+        "submitted_at": "2026-10-31T18:00:26.398Z",
+        "created_at": "2026-10-31T18:00:26.398Z",
+        "created_by": "intake"
+      }
+    },
+    {
+      "memory_id": "mem_31250c9e",
+      "datapack_id": "student-arjun-private",
+      "content": "STATUS UPDATE for [TKT-9DFEFB]: Your complaint has been logged and routed to the electricity maintenance cell.",
+      "data": {},
+      "metadata": {
+        "type": "ticket_status",
+        "ticket_id": "TKT-9DFEFB",
+        "student_id": "arjun",
+        "category": "electricity",
+        "is_clustered": false,
+        "created_at": "2026-10-31T18:00:26.399Z",
+        "created_by": "intake"
+      }
+    }
+  ]
+}

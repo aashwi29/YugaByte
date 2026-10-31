@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Grievance Swarm · Meko Context Layer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+  <!-- Top Navigation & Status Bar -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="logo-badge">
+        <span class="logo-icon">⚡</span>
+        <div class="logo-text">
+          <h1>Campus Grievance Swarm</h1>
+          <span class="track-badge">hackCBS 9.0 · Meko Challenge · Track B</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live System Telemetry -->
+    <div class="header-center">
+      <div class="telemetry-bar">
+        <div class="telemetry-item">
+          <span class="pulse-dot active"></span>
+          <span class="telemetry-label">Meko MCP:</span>
+          <span class="telemetry-val" id="mcp-status">Active</span>
+        </div>
+        <div class="telemetry-divider"></div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Datapacks:</span>
+          <span class="telemetry-val text-cyan" id="datapack-count">4 Scopes</span>
+        </div>
+        <div class="telemetry-divider"></div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Meko Calls:</span>
+          <span class="telemetry-val text-emerald font-mono" id="call-count">0</span>
+        </div>
+        <div class="telemetry-divider"></div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Active Tickets:</span>
+          <span class="telemetry-val text-amber font-mono" id="ticket-count">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Scenario Presets -->
+    <div class="header-right">
+      <button class="btn btn-secondary btn-sm" id="btn-reset" title="Reset store and re-seed baseline">
+        🔄 Reset
+      </button>
+      <div class="scenario-dropdown">
+        <button class="btn btn-primary btn-sm glow-btn" id="scenario-dropdown-btn">
+          ▶ Demo Scenarios ▾
+        </button>
+        <div class="dropdown-menu" id="scenario-menu">
+          <a href="#" class="dropdown-item" id="run-case-a">
+            <strong>Case A:</strong> Riya's Geyser Tripping (Initial)
+          </a>
+          <a href="#" class="dropdown-item" id="run-case-b-on">
+            <strong>Case B (Meko ON):</strong> Arjun Recalls Canon (30 min fix)
+          </a>
+          <a href="#" class="dropdown-item text-red" id="run-case-b-off">
+            <strong>Case B (Meko OFF):</strong> Siloed Helpdesk (72 hr fail)
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-layout">
+    <!-- Left Navigation Tabs -->
+    <aside class="sidebar-tabs">
+      <nav class="nav-pills">
+        <button class="nav-pill active" data-tab="tab-swarm">
+          <span class="pill-icon">🕸️</span>
+          <span class="pill-text">Live Swarm View</span>
+          <span class="badge badge-pulse">Live</span>
+        </button>
+        <button class="nav-pill" data-tab="tab-student">
+          <span class="pill-icon">🎓</span>
+          <span class="pill-text">Student Portal (B1)</span>
+        </button>
+        <button class="nav-pill" data-tab="tab-caretaker">
+          <span class="pill-icon">🛠️</span>
+          <span class="pill-text">Caretaker Console (B2)</span>
+          <span class="badge badge-amber" id="pending-badge" style="display: none;">0</span>
+        </button>
+        <button class="nav-pill" data-tab="tab-b3-showcase">
+          <span class="pill-icon">⚡</span>
+          <span class="pill-text">B3 Learning Proof</span>
+        </button>
+        <button class="nav-pill" data-tab="tab-dean">
+          <span class="pill-icon">🏛️</span>
+          <span class="pill-text">Dean View (Canon Only)</span>
+        </button>
+        <button class="nav-pill" data-tab="tab-logs">
+          <span class="pill-icon">📜</span>
+          <span class="pill-text">Meko Call Log</span>
+        </button>
+      </nav>
+
+      <!-- Protocol Compliance Box -->
+      <div class="compliance-box">
+        <div class="compliance-title">TRACK B COMPLIANCE</div>
+        <ul class="compliance-list">
+          <li class="comp-item done"><span>✔</span> B1: Live End-to-End</li>
+          <li class="comp-item done"><span>✔</span> B2: 2-Way Sync & Promote</li>
+          <li class="comp-item done"><span>✔</span> B3: Case A → Case B Learning</li>
+          <li class="comp-item done"><span>✔</span> B4: Real Meko Swarm Graph</li>
+          <li class="comp-item done"><span>✔</span> B5: Private Student Scopes</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <div class="workspace-area">
+      <!-- ================= TAB 1: LIVE SWARM VIEW ================= -->
+      <section id="tab-swarm" class="tab-pane active">
+        <div class="swarm-container">
+          <div class="pane-header">
+            <div>
+              <h2>Live Multi-Agent Swarm Graph (B4)</h2>
+              <p class="subtitle">Every node and moving particle represents a real, verified Meko tool call on the shared context layer.</p>
+            </div>
+            <!-- Legend -->
+            <div class="swarm-legend">
+              <span class="legend-item"><span class="legend-dot dot-written"></span> memory_add (written)</span>
+              <span class="legend-item"><span class="legend-dot dot-recalled"></span> memory_search (recalled)</span>
+              <span class="legend-item"><span class="legend-dot dot-shared"></span> cross-recall (shared)</span>
+              <span class="legend-item"><span class="legend-dot dot-promoted"></span> memory_promote (promoted)</span>
+            </div>
+          </div>
+
+          <!-- Swarm Interactive Graph Canvas -->
+          <div class="canvas-wrapper">
+            <canvas id="swarmCanvas"></canvas>
+            <!-- Overlay controls -->
+            <div class="canvas-overlay-controls">
+              <span class="badge badge-dark" id="fps-counter">60 FPS</span>
+              <button class="btn btn-sm btn-glass" id="btn-recenter">Center Swarm</button>
+            </div>
+          </div>
+
+          <!-- Live Meko Stream Feed Drawer -->
+          <div class="live-feed-drawer">
+            <div class="drawer-header">
+              <div class="drawer-title">
+                <span class="pulse-dot"></span>
+                <span>REAL-TIME MEKO MCP STREAM (logs/meko_calls.jsonl)</span>
+              </div>
+              <div class="drawer-actions">
+                <span class="feed-count text-muted" id="live-stream-count">Listening...</span>
+              </div>
+            </div>
+            <div class="live-feed-list" id="live-feed-container">
+              <!-- Dynamically populated via SSE -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: STUDENT PORTAL (B1) ================= -->
+      <section id="tab-student" class="tab-pane">
+        <div class="student-portal-container">
+          <div class="pane-header">
+            <div>
+              <h2>Student Grievance Portal (B1: Live End-to-End)</h2>
+              <p class="subtitle">Raise complaints in natural language. Privacy is strictly isolated to student private datapacks.</p>
+            </div>
+          </div>
+
+          <div class="two-col-grid">
+            <!-- Complaint Submission Form -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Submit Campus Grievance</h3>
+                <span class="badge badge-cyan">Natural Language Intake</span>
+              </div>
+              <form id="grievance-form">
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label>Student Persona</label>
+                    <select id="student-persona" class="form-control">
+                      <option value="riya">Riya Patel (Hostel Block B, Room 204)</option>
+                      <option value="arjun">Arjun Sen (Hostel Block B, Room 212)</option>
+                      <option value="priya">Priya Sharma (Hostel Block C, Room 108)</option>
+                    </select>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label>Location / Room</label>
+                    <input type="text" id="grievance-location" class="form-control" value="Block B Room 204">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Describe the issue in your own words</label>
+                  <textarea id="grievance-text" class="form-control" rows="4" placeholder="E.g., The geyser in the 2nd floor bathroom gives lukewarm water and then the lights flicker and it completely stops heating..."></textarea>
+                </div>
+
+                <div class="form-presets">
+                  <span class="preset-label">Quick Presets:</span>
+                  <button type="button" class="btn btn-xs btn-outline preset-btn" data-preset="caseA">
+                    ❄️ Case A: Geyser Trips Breaker
+                  </button>
+                  <button type="button" class="btn btn-xs btn-outline preset-btn" data-preset="caseB">
+                    🚿 Case B: Washroom Heater Dead Again
+                  </button>
+                  <button type="button" class="btn btn-xs btn-outline preset-btn" data-preset="mess">
+                    🍲 Mess: Hot Water Out in Dishwashing
+                  </button>
+                </div>
+
+                <div class="form-footer">
+                  <div class="toggle-group">
+                    <label class="switch">
+                      <input type="checkbox" id="student-meko-toggle" checked>
+                      <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-text">Enable Meko Institutional Context</span>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="btn-submit-grievance">
+                    Submit Grievance →
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Student View of Live Status -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Student Status Tracker (Where It Stands & Why)</h3>
+                <span class="badge badge-emerald">Live Updates</span>
+              </div>
+              <div id="student-status-view" class="status-tracker-body">
+                <div class="empty-state">
+                  <span class="empty-icon">📨</span>
+                  <p>No active grievance submitted yet. Use the form to raise a complaint or click a quick demo preset above.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: CARETAKER CONSOLE (B2) ================= -->
+      <section id="tab-caretaker" class="tab-pane">
+        <div class="caretaker-container">
+          <div class="pane-header">
+            <div>
+              <h2>Caretaker & Wardens Hub (B2: People & Agents in Sync)</h2>
+              <p class="subtitle">Human staff make the final calls. Inspect conflict flags, review technician notes, and promote verified fixes to Campus Canon.</p>
+            </div>
+          </div>
+
+          <!-- Pending Canon Promotions Alert Banner -->
+          <div id="pending-promotion-banner" class="alert-banner" style="display: none;">
+            <div class="banner-content">
+              <span class="banner-icon">⚡</span>
+              <div>
+                <strong>Institutional Lesson Ready for Promotion!</strong>
+                <p id="pending-banner-text">Knowledge Keeper has synthesized a verified fix from resolved grievance. Human confirmation required to write to campus-canon.</p>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-purple" id="btn-review-promotion">Review & Confirm Promotion</button>
+          </div>
+
+          <div class="two-col-grid">
+            <!-- Active Grievance Queue -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Active Campus Grievance Queue</h3>
+                <span class="badge badge-blue" id="active-queue-count">0 tickets</span>
+              </div>
+              <div class="ticket-queue-list" id="caretaker-ticket-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Ticket Action & Resolution Inspector -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Action & Resolution Workspace</h3>
+                <span class="badge badge-dark" id="selected-ticket-badge">Select a ticket</span>
+              </div>
+              <div id="caretaker-action-panel">
+                <div class="empty-state">
+                  <span class="empty-icon">👈</span>
+                  <p>Select a grievance from the queue to view departmental diagnosis, cross-department conflict flags, and resolve.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 4: B3 LEARNING PROOF ================= -->
+      <section id="tab-b3-showcase" class="tab-pane">
+        <div class="b3-showcase-container">
+          <div class="pane-header">
+            <div>
+              <h2>B3 Hard Requirement: Context Changes a Later Case</h2>
+              <p class="subtitle">Proof that something learned in Case A visibly changes Case B for a different student. With Meko OFF, it must not.</p>
+            </div>
+          </div>
+
+          <!-- Interactive 3-Step Walkthrough Bar -->
+          <div class="step-progression-bar">
+            <div class="step-card" id="step1-card">
+              <div class="step-num">Step 1</div>
+              <div class="step-title">Case A: Student Riya</div>
+              <div class="step-desc">First cold water failure. Electrician diagnosis discovers Phase 1 overload issue.</div>
+              <button class="btn btn-sm btn-primary" id="btn-run-step1">1. Run Case A</button>
+            </div>
+            <div class="step-arrow">➔</div>
+            <div class="step-card" id="step2-card">
+              <div class="step-num">Step 2</div>
+              <div class="step-title">Human Promotion</div>
+              <div class="step-desc">Caretaker approves Knowledge Keeper lesson into campus-canon.</div>
+              <button class="btn btn-sm btn-purple" id="btn-run-step2" disabled>2. Approve Promotion</button>
+            </div>
+            <div class="step-arrow">➔</div>
+            <div class="step-card" id="step3-card">
+              <div class="step-num">Step 3</div>
+              <div class="step-title">Case B: Student Arjun</div>
+              <div class="step-desc">Later cold water failure. Test with Meko ON vs Meko OFF.</div>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-emerald" id="btn-run-step3-on" disabled>3a. Meko ON (30m)</button>
+                <button class="btn btn-sm btn-danger" id="btn-run-step3-off" disabled>3b. Meko OFF (72h)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side-by-Side Comparison Matrix -->
+          <div class="b3-comparison-grid">
+            <div class="card glass-card border-emerald">
+              <div class="card-header bg-emerald-dim">
+                <div class="d-flex align-center gap-2">
+                  <span class="badge badge-emerald">WITH MEKO (Learning Campus)</span>
+                  <span class="text-emerald font-bold">Case B: Arjun Sen</span>
+                </div>
+                <span class="badge badge-emerald font-mono">ETA: 30 MINUTES</span>
+              </div>
+              <div class="b3-body" id="b3-on-content">
+                <div class="b3-feature">
+                  <strong>Institutional Memory:</strong>
+                  <p class="text-cyan">⚡ Recalled from Campus Canon: Phase 1 radiator overload lesson verified from Case A.</p>
+                </div>
+                <div class="b3-feature">
+                  <strong>Technician Action Plan:</strong>
+                  <p>Electrician dispatched immediately to shift geyser breaker to Phase 2 on Subpanel DB-2B. No coil replacement needed.</p>
+                </div>
+                <div class="b3-feature">
+                  <strong>Parts Requisition:</strong>
+                  <p class="text-emerald">₹0 wasted (Existing breaker panel load balanced)</p>
+                </div>
+                <div class="b3-feature">
+                  <strong>Outcome:</strong>
+                  <p class="text-emerald font-bold">Hot water restored to 2nd floor in 30 minutes! Institutional memory prevented 3 days of delay.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card glass-card border-red">
+              <div class="card-header bg-red-dim">
+                <div class="d-flex align-center gap-2">
+                  <span class="badge badge-danger">WITHOUT MEKO (Siloed Helpdesk)</span>
+                  <span class="text-red font-bold">Case B: Arjun Sen</span>
+                </div>
+                <span class="badge badge-danger font-mono">ETA: 72 HOURS</span>
+              </div>
+              <div class="b3-body" id="b3-off-content">
+                <div class="b3-feature">
+                  <strong>Institutional Memory:</strong>
+                  <p class="text-muted">❌ None. Department agents operate in isolation. Prior fixes forgotten.</p>
+                </div>
+                <div class="b3-feature">
+                  <strong>Technician Action Plan:</strong>
+                  <p>Standard procedure: assumes heating element is blown out. Submits purchase order for new Venus 2000W heating coil.</p>
+                </div>
+                <div class="b3-feature">
+                  <strong>Parts Requisition:</strong>
+                  <p class="text-red">₹4,500 needlessly spent on heating coil that wasn't broken.</p>
+                </div>
+                <div class="b3-feature">
+                  <strong>Outcome:</strong>
+                  <p class="text-red font-bold">Students endure 3 days of ice-cold winter showers while waiting for parts shipment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 5: DEAN VIEW ================= -->
+      <section id="tab-dean" class="tab-pane">
+        <div class="dean-container">
+          <div class="pane-header">
+            <div>
+              <h2>Executive Dean View (Read-Only Campus Canon)</h2>
+              <p class="subtitle">Leadership sees verified institutional patterns, not anecdotal shouting. Reads strictly from campus-canon.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-refresh-dean">🔄 Refresh Canon</button>
+          </div>
+
+          <div class="two-col-grid">
+            <!-- Canon Knowledge Records -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Verified Campus Canon Records</h3>
+                <span class="badge badge-purple" id="canon-record-count">0 Verified</span>
+              </div>
+              <div class="canon-list" id="dean-canon-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Strategic Systemic Intelligence -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Systemic Campus Patterns & Recommendations</h3>
+                <span class="badge badge-cyan">Dean Analytics</span>
+              </div>
+              <div class="dean-patterns-body" id="dean-patterns-container">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 6: MEKO CALL LOG ================= -->
+      <section id="tab-logs" class="tab-pane">
+        <div class="logs-container">
+          <div class="pane-header">
+            <div>
+              <h2>Meko Call Log Inspector (logs/meko_calls.jsonl)</h2>
+              <p class="subtitle">Every real Meko MCP tool invocation, timestamped, labeled, and verifiable.</p>
+            </div>
+            <div class="log-filters">
+              <select id="filter-tool" class="form-control form-control-sm">
+                <option value="">All Tools</option>
+                <option value="memory_add">memory_add</option>
+                <option value="memory_search">memory_search</option>
+                <option value="memory_promote">memory_promote</option>
+                <option value="knowledgebase_search">knowledgebase_search</option>
+              </select>
+              <select id="filter-datapack" class="form-control form-control-sm">
+                <option value="">All Datapacks</option>
+                <option value="campus-canon">campus-canon</option>
+                <option value="dept-electricity">dept-electricity</option>
+                <option value="dept-mess">dept-mess</option>
+                <option value="student-riya-private">student-riya-private</option>
+                <option value="student-arjun-private">student-arjun-private</option>
+              </select>
+              <button class="btn btn-sm btn-secondary" id="btn-refresh-logs">Refresh</button>
+            </div>
+          </div>
+
+          <div class="card glass-card table-card">
+            <div class="table-responsive">
+              <table class="logs-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Agent</th>
+                    <th>Datapack ID</th>
+                    <th>Tool</th>
+                    <th>Label</th>
+                    <th>Payload Summary</th>
+                    <th>Result ID</th>
+                  </tr>
+                </thead>
+                <tbody id="logs-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Promotion Review Modal (Human Confirmation) -->
+  <div class="modal-backdrop" id="promotion-modal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="d-flex align-center gap-2">
+          <span class="modal-icon">📜</span>
+          <h3>Human Approval: Promote to Campus Canon</h3>
+        </div>
+        <button class="btn-close" id="btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="alert-info">
+          <strong>B2 & 4.1 Requirement:</strong> Direct writes to <code>campus-canon</code> are prohibited. You are reviewing the candidate memory synthesized by Knowledge Keeper. Confirming executes <code>memory_promote</code>.
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-item">
+            <span class="preview-label">Source Datapack:</span>
+            <span class="preview-val font-mono text-cyan" id="modal-source-dp">dept-electricity</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-label">Candidate Memory ID:</span>
+            <span class="preview-val font-mono text-amber" id="modal-candidate-id">mem_...</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-label">Synthesized Lesson:</span>
+            <div class="preview-text-box" id="modal-lesson-text">...</div>
+          </div>
+          <div class="preview-item">
+            <span class="preview-label">Target Datapack:</span>
+            <span class="preview-val font-mono text-purple font-bold">campus-canon</span>
+          </div>
+        </div>
+
+        <div class="form-group mt-3">
+          <label>Human Approver Identity</label>
+          <input type="text" id="modal-approver-name" class="form-control" value="Caretaker Ramesh (Hostel B)">
+        </div>
+
+        <div class="form-group">
+          <label>Verification Sign-off Note</label>
+          <input type="text" id="modal-approval-note" class="form-control" value="Physically verified hot water temperature and breaker load test">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-cancel-modal">Cancel</button>
+        <button class="btn btn-purple" id="btn-confirm-promote">Confirm & Execute memory_promote →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/js/swarm_canvas.js"></script>
+  <script src="/js/meko_feed.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
